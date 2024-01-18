@@ -1,0 +1,25 @@
+
+<html>
+  <head>
+    <title>Random Book Trivia</title>
+    <link rel="stylesheet" type="text/css" href="main.css">
+  </head>
+  <body>
+    <div class="container">
+      <h1>Random Book Trivia</h1>
+      <form action="/" method="post">
+        <label for="questionSelect">Choose a question:</label>
+        <select id="questionSelect" name="selectedQuestion" required>
+          <% triviaList.forEach((item, index) => { %>
+            <option value="<%= index %>"><%= item.question %></option>
+          <% }); %>
+        </select>
+        <button type="submit">Get Answer</button>
+      </form>
+      <% if (typeof selectedTrivia !== 'undefined') { %>
+        <p>Selected Question: <%= selectedTrivia.question %></p>
+        <p>Correct Answer: <%= selectedTrivia.correctAnswer %></p>
+      <% } %>
+    </div>
+  </body>
+</html>
